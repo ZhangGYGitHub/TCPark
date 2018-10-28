@@ -1,0 +1,25 @@
+<!--pages/aboutUs/aboutUs.wxml-->
+<view>
+    <view class='abtop'>
+        <image mode="widthFix" class='logo' src="/images/logo.jpg"></image>
+        <view class='name'>小牛停车</view>
+    </view>
+    <view class='msg'>
+        <view class='msg-row'>
+            <text class='lf'>电话</text>
+            <text class='rg'>10086</text>
+        </view>
+        <view class='msg-row'>
+            <text class='lf'>邮箱</text>
+            <text class='rg'>yijiantingche@qq.com</text>
+        </view>
+        <view class='msg-row'>
+            <text class='lf'>公众号</text>
+            <text class='rg'>yijiantingche</text>
+        </view>
+        <view class='msg-row'>
+            <text class='lf'>官网</text>
+            <image mode="widthFix" src="../images/arrow-right.png" class='arrow rg'></image>
+        </view>
+    </view> 
+</view> 

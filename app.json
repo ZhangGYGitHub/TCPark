@@ -1,0 +1,58 @@
+{
+  "pages":[
+    "pages/parking/parking",
+    "pages/search/search",
+    "pages/w_my/w_my",
+    
+    "pages/w_my_car/w_my_car",
+    "pages/w_my_bind_prompt/w_my_bind_prompt",
+    "pages/w_my_settings/w_my_settings",
+   
+    "pages/aboutUs/aboutUs",
+    
+    "pages/w_my_payment_record/w_my_payment_record",
+   
+   
+    "pages/member/member",
+    "pages/w_payment_prompt/w_payment_prompt",
+    "pages/w_payment/w_payment",
+    
+   "pages/w_my_bind_platenumber/w_my_bind_platenumber",
+   "pages/index_fail/index_fail",
+   "pages/logs/logs"
+     
+    
+    
+  ],
+  "window":{
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3e3f42",
+    "navigationBarTitleText": "一键停车",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#ffffff"
+  },
+  "tabBar": {
+    "color":"white",
+    "backgroundColor": "#3e3f42",
+    "selectedColor": "#ffb900",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/parking/parking",
+        "text": "一键停车",
+        "iconPath": "images/auto.png",
+        "selectedIconPath": "images/auto1.png"
+      },
+     
+      {
+        "pagePath": "pages/w_my/w_my",
+        "text": "我的",
+        "iconPath": "images/account.png",
+        "selectedIconPath": "images/account1.png"
+      }
+    ]
+  },
+  "networkTimeout":{
+    "request":15000
+  }
+}
