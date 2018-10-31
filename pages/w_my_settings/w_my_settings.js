@@ -23,6 +23,39 @@ Page({
       }
     })
   },
+  phoneNumber: '',
+  getPhoneNumber: function (e) {
+    console.log("e.detail.errMsg" + e.detail.errMsg)
+    this.setData({
+      phoneNumber: e.detail.errMsg})
+    console.log(e.detail.errMsg)
+    console.log(e.detail.iv)
+    console.log(e.detail.encryptedData)
+    if (e.detail.errMsg == 'getPhoneNumber:fail user deny') {
+      wx.showModal({
+        
+        title: '提示',
+        showCancel: false,
+        content: '未授权',
+        success: function (res) { }
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '同意授权',
+        success: function (res) { }
+      })
+    }
+  },
+  //一键获取手机号，将获取的值渲染到input框
+  getPhoneNumber: function (e) {
+    console.log("e.detail.errMsg" + e.detail.errMsg)
+    this.setData({
+      phoneNumber: e.detail.errMsg
+    })
+  },
+
   /**
    * 页面的初始数据
    */
@@ -78,6 +111,7 @@ Page({
   onReachBottom: function () {
     
   },
+  
 
   /**
    * 用户点击右上角分享

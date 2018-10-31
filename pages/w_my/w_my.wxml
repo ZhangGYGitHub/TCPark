@@ -60,7 +60,7 @@
       </view>
     </view> -->
 
-    <!--停车优惠券-->
+    <!--设置-->
     <view class="list-item stopcar" bindtap='my_list4'>
       <view class="item1">
          <image class="item-image" src="/images/4.png"></image> 

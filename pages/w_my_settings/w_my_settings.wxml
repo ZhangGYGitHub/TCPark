@@ -1,19 +1,16 @@
 <!--pages/aboutUs/aboutUs.wxml-->
 <view>
-    <view class='msg'>
-        <view class='msg-row'>
-            <text class='lf'>电话</text>
-            <text class='rg'>10086</text>
-        </view>
-       
-        <view class='msg-row'>
-            <text class='lf'>公众号</text>
-            <text class='rg'>yijiantingche</text>
-        </view>
-        <view class='msg-row'>
-            <text class='lf'>官网</text>
-            <image mode="widthFix" src="../images/arrow-right.png" class='arrow rg'></image>
-        </view>
-    </view> 
+        
+       <span style="font-size:14px;"><button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号</button></span>  
+
+       <view class="addAddress addAddressLine">
+     <view class="addAddressleft">手机号码</view>
+     <view class="addAddressleft">{{phoneNumber}}</view>
+     <input type="number" name="name" placeholder-class="phcolor" class="addAddressinput inputPhone" maxlength="11" minlength="11" placeholder="您的手机号" value="{{phoneNumber}}"/>
+
+     <button  open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" style='{{phoneNumber!=""?"display:none":""}}'>获取手机号</button>
+</view>
+
+
     <view class='outbtn' bindtap="logout">退出登录</view> 
 </view> 
