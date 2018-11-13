@@ -22,7 +22,7 @@
   <view class="search-prompt" >
       <text class="prompt-desc prompt-desc1">温馨提示</text>  
       <text class="prompt-desc prompt-desc2">每位会员可绑定多个车牌，绑定后的车牌均可享受会员优惠，最多可绑定5个。
-      </text>
+   </text>
   </view>
 </view>
 

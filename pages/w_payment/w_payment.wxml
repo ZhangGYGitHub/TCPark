@@ -43,15 +43,15 @@
 
       <block wx:if="{{first_pay}}">
         <!-- 会员减免 -->
-        <block wx:if="{{member}}">
+        <!-- <block wx:if="{{member}}">
           <view class='m-p-i'>
             <view class='member-pay-info'>
               <text class='member-pay-info-desc'>白银会员</text>
               <text class='member-pay-info-number'>-¥{{pay_member}}</text>
             </view>
           </view>
-        </block>
-        <block  wx:else>
+        </block> -->
+        <block  >
         <view class='m-p-i'>
             <view class='member-pay-info'>
               <text class='member-pay-info-desc'>普通用户</text>
@@ -73,7 +73,7 @@
       </block>
 
       <!-- 会员积分 -->    
-        <view class="memberjifen-pay-info {{showHeight?'m-height':''}}">
+      <!--  <view class="memberjifen-pay-info {{showHeight?'m-height':''}}">
         <block block wx:if="{{member}}">
           <view class='memberjifen-pay-info-jian'>
             <text class='memberjifen-pay-info-desc'>会员积分</text>
@@ -93,7 +93,7 @@
             <text class="pay-desc" bindtap='tapRule'>缴费规则</text>
             <image class='pay-img' src='/images/doubt.png' bindtap='tapRule'></image>
           </view>
-        </view>
+        </view> -->
       
       <!-- 进行付款 -->
       <view class='pay-info'>

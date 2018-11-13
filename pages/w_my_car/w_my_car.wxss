@@ -93,7 +93,7 @@ page{
   width: 670rpx;
   margin: 0 auto;
   text-align: center;
-  background: #ffb900;
+  background: #f05b48;
   color: #000;
   height: 90rpx;
   border-radius: 40rpx;

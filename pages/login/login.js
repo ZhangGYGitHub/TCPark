@@ -12,7 +12,7 @@ Page({
   //事件处理函数
   bindViewTap: function () {
     wx.navigateTo({
-      url: '../w_my/w_my'
+      url: '../w_my_car/w_my_car'
     })
   },
   onLoad: function () {

@@ -32,7 +32,7 @@
   </form>
 </view>
 <!--温馨提示-->
-<view class='bind-tishi'>
+<!-- <view class='bind-tishi'>
   <view class="search-prompt" >
       <text class="prompt-desc prompt-desc1">温馨提示</text>  
       <text class="prompt-desc prompt-desc2">只有会员用户的手机号才能获取到验证码短信哦,
@@ -40,4 +40,4 @@
       <text class="prompt-desc prompt-desc3">普通用户需要先加入会员才能进行会员绑定,享受会员优惠哦。
       </text>
   </view>
-</view>
+</view> -->

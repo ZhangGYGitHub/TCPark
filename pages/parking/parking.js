@@ -278,7 +278,17 @@ Page({
       url: "../aboutUs/aboutUs",
     })
   },
-
+		mintime: function(){
+			wx.navigateTo({
+				url: "/pages/w_my_payment_record/w_my_payment_record"
+			})
+	},
+	minmoney: function(){
+		
+				wx.navigateTo({
+					url: "/pages/w_my_payment_record/w_my_payment_record"
+				})
+		},
   rebackFun() {
     console.log('dd')
     this.mapCtx.moveToLocation();

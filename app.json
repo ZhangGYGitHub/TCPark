@@ -4,7 +4,6 @@
     "pages/w_my/w_my",
     "pages/w_my_payment_record/w_my_payment_record",
     "pages/w_my_car/w_my_car",
-    "pages/w_my_settings/w_my_settings",
     
     "pages/parking/parking",
     "pages/search/search",
@@ -13,7 +12,7 @@
    
     "pages/aboutUs/aboutUs",
     
-    
+    "pages/w_index_rule/w_index_rule",
     "pages/member/member",
     "pages/w_payment_prompt/w_payment_prompt",
     "pages/w_payment/w_payment",
@@ -43,7 +42,6 @@
         "iconPath": "images/auto.png",
         "selectedIconPath": "images/auto1.png"
       },
-     
       {
         "pagePath": "pages/w_my/w_my",
         "text": "我的",

@@ -2,20 +2,20 @@
 <view>
     <view class='abtop'>
         <image mode="widthFix" class='logo' src="/images/logo.jpg"></image>
-        <view class='name'>小牛停车</view>
+        <view class='name'>Parking卫</view>
     </view>
     <view class='msg'>
         <view class='msg-row'>
             <text class='lf'>电话</text>
-            <text class='rg'>10086</text>
+            <text class='rg'></text>
         </view>
         <view class='msg-row'>
             <text class='lf'>邮箱</text>
-            <text class='rg'>yijiantingche@qq.com</text>
+            <text class='rg'>@qq.com</text>
         </view>
         <view class='msg-row'>
             <text class='lf'>公众号</text>
-            <text class='rg'>yijiantingche</text>
+            <text class='rg'></text>
         </view>
         <view class='msg-row'>
             <text class='lf'>官网</text>

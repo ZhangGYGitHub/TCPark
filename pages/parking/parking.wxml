@@ -15,13 +15,12 @@
       <cover-image class="img" src='/images/kefu.png' mode="widthFix"></cover-image>
     </cover-view>
     <!-- 搜索车位 -->  
+    <cover-view>
+      <button class='timemin'  bindtap='mintime'>时间最短</button>
     
-      <button class='timemin' >时间最短</button>>
-  
-    
-      <button class='pricemin'>价格最低</button>
-   
-    <cover-view  wx:if="{{state}}">
+      <button class='pricemin' bindtap="minmoney">价格最低</button>
+  </cover-view>
+    <cover-view  >
       <cover-view class="close-pop-mb" bindtap="closePopFun"></cover-view>
       <!-- 共享时段 -->
       <cover-view class="pop-msg-box" wx:if="{{state == 1}}">
@@ -79,7 +78,6 @@
             <cover-view class='txt'>距离</cover-view>
           </cover-view>
         </cover-view>
-        <cover-view class='pop-ps'>在此消费免费停车</cover-view>
         <cover-view class='pop-compant'>归属公司：广州酷顶网络</cover-view>
         <cover-view class='pop-btn'>
           <cover-view class="border"></cover-view>
@@ -148,7 +146,7 @@
     </cover-view>
 
     <!-- 订单进行中 -->
-    <cover-view class="drawer_container" animation="{{animationData}}" wx:if="{{hasorder}}">
+    <cover-view class="drawer_container" animation="{{animationData}}" >
       <cover-view class='pop-main-t'>
         <cover-view class='tit'>
           <cover-view class='inline-v'>检测到您有1张订单进行中...</cover-view>

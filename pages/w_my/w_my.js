@@ -31,15 +31,15 @@ Page({
     } else {
       wx.showModal({
         title: "温馨提示",
-        content: "您需要绑定会员后才能使用此功能",
+        content: "您需要绑定车牌后才能使用此功能",
         confirmColor: "#4fafc9",
-        confirmText: "绑定会员",
+        confirmText: "绑定车牌",
         cancelText: "返回首页",
         mask: true,
         success: function (res) {
           if (res.confirm) {
             wx.navigateTo({
-              url: "/pages/w_my_bind_member/w_my_bind_member"
+              url: "/pages/parking/parking"
             })
           } else if (res.cancel) {
             wx.reLaunch({
@@ -49,6 +49,36 @@ Page({
         },
       })
     }
+			if (app.globalData.flag) {//如果flag为true，退出
+				wx.navigateBack({
+					delta: 1
+				})
+			} else {
+				console.log('这里是index')
+			}
+		if (app.globalData.userInfo) {
+			this.setData({
+				userInfo: app.globalData.userInfo,
+			})
+		} else if (this.data.canIUse) {
+			// 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+			// 所以此处加入 callback 以防止这种情况
+			app.userInfoReadyCallback = res => {
+				this.setData({
+					userInfo: res.userInfo,
+				})
+			}
+		} else {
+			// 在没有 open-type=getUserInfo 版本的兼容处理
+			wx.getUserInfo({
+				success: res => {
+					app.globalData.userInfo = res.userInfo
+					this.setData({
+						userInfo: res.userInfo,
+					})
+				}
+			})
+		}
   },
 
   /**
@@ -131,14 +161,43 @@ Page({
       this.onLoad();
     } else {
       wx.navigateTo({
-        url: "/pages/w_my_settings/w_my_settings"
+        url: "/pages/aboutUs/aboutUs"
       })
     }
   },
-  // 商户优惠券
-  // my_list5: function (e) {
-  //   wx.navigateTo({
-  //     url: "/pages/w_my_businessman_coupon/w_my_businessman_coupon"
-  //   })
-  // },
+	logout: function () {
+	    let that = this;
+	    wx.request({
+	      url: app.globalData.websize + '/api/common/listMessage.json',
+	      data: {
+	        sessionId: wx.getStorageSync('sessionid')
+	      },
+	      method: 'POST',
+	      header: {
+	        'content-type': 'application/x-www-form-urlencoded' // 默认值
+	      },
+	      success: function (res) {
+	        app.callbackFun(res);
+	        if (res.data.status == 2000000) {
+	
+	        } else {
+	          wx.showToast({
+	            title: res.data.message,
+	            icon: 'loading',
+	          })
+	        }
+	      }
+	    })
+	  },
+		bindViewTap: function () {
+			wx.navigateTo({
+				url: '../w_my_car/w_my_car'
+			})
+		},
+  //商户优惠券
+  my_list5: function (e) {
+    wx.navigateTo({
+      url: "#"
+    })
+  },
 })

@@ -19,7 +19,7 @@ page{
   flex-direction: row;
   align-items: top;
   justify-content: left;   
-  margin-left: 100rpx;
+  margin-left: 0rpx;
   z-index: 10;
 }
 .login-info{
@@ -31,6 +31,7 @@ page{
   z-index: 10;
 }
 .userinfo-avatar {
+	
   width: 180rpx;
   height: 180rpx;
   border-radius: 50%;
@@ -219,3 +220,14 @@ page{
   background: #fed362;
   z-index: 5;
 }
+.outbtn{
+	height:40px;
+	line-height:40px;
+	text-align:center;
+	font-size:14px;
+	background-color: #f05b48;
+	width:100%;
+	position:fixed;
+	bottom:4px;
+	left:0;
+	}
