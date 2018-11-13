@@ -85,7 +85,7 @@
           <cover-view class="btn" >导航</cover-view>
         </cover-view>
       </cover-view>
-      <!-- 共享全天候 -->
+      <!-- 共享全天候 -->  
       <cover-view class="pop-msg-box" wx:if="{{state == 3}}">
         <cover-view class="tit">
           <cover-image class="ico" src="../images/adrico.png"/>
