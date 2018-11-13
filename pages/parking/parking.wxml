@@ -85,7 +85,7 @@
           <cover-view class="btn" >导航</cover-view>
         </cover-view>
       </cover-view>
-      <!-- 共享全天候 -->
+      <!-- 共享全天候 -->  
       <cover-view class="pop-msg-box" wx:if="{{state == 3}}">
         <cover-view class="tit">
           <cover-image class="ico" src="../images/adrico.png"/>
@@ -146,7 +146,7 @@
     </cover-view>
 
     <!-- 订单进行中 -->
-    <cover-view class="drawer_container" animation="{{animationData}}" >
+    <cover-view class="drawer_container" animation="{{animationData}}" wx:if="{{hasorder}}">
       <cover-view class='pop-main-t'>
         <cover-view class='tit'>
           <cover-view class='inline-v'>检测到您有1张订单进行中...</cover-view>
