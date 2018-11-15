@@ -14,13 +14,18 @@
     <cover-view class='kefu-box' bindtap='aboutUs'>
       <cover-image class="img" src='/images/kefu.png' mode="widthFix"></cover-image>
     </cover-view>
-    <!-- 搜索车位 -->  
+		
+    <!-- 两个条件搜索按钮 --> 
+		<cover-view class="timemin">
+		<cover-image  bindtap='mintime' src="/images/minmoney.png"></cover-image>
+		</cover-view>
+		<cover-view class="pricemin">
+     <!-- <button class='timemin'  bindtap='mintime'>价格最低</button> -->
+			
+     <!-- <button class='pricemin' bindtap="minmoney">价格最低</button> -->
+		 <cover-image  bindtap="minmoney" src="/images/mintime.png"></cover-image>
+		</cover-view>
     <cover-view>
-      <button class='timemin'  bindtap='mintime'>时间最短</button>
-    
-      <button class='pricemin' bindtap="minmoney">价格最低</button>
-  </cover-view>
-    <cover-view  >
       <cover-view class="close-pop-mb" bindtap="closePopFun"></cover-view>
       <!-- 共享时段 -->
       <cover-view class="pop-msg-box" wx:if="{{state == 1}}">

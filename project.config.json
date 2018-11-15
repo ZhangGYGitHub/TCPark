@@ -14,11 +14,7 @@
 	"libVersion": "1.9.4",
 	"appid": "wxf57562700044f496",
 	"projectname": "2222",
-	"svr": "/",
-	"client": "/",
-	"qcloudRoot": "/",
-	"miniprogramRoot": "/",
-	"pluginRoot": "/",
+	
 	"scripts": {},
 	"condition": {
 		"search": {
@@ -37,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 10,
 			"list": [
 				{
 					"id": 0,
@@ -76,15 +72,15 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "缴费提示",
-					"pathName": "pages/w_payment_prompt/w_payment_prompt",
+					"id": 6,
+					"name": "缴费",
+					"pathName": "pages/w_payment/w_payment",
 					"query": ""
 				},
 				{
-					"id": 8,
-					"name": "未知",
-					"pathName": "pages/w_index_rule/w_index_rule",
+					"id": 7,
+					"name": "缴费成功",
+					"pathName": "pages/w_payment_prompt/w_payment_prompt",
 					"query": ""
 				},
 				{
@@ -94,10 +90,15 @@
 					"query": ""
 				},
 				{
-					"id": -1,
-					"name": "用户",
-					"pathName": "pages/member/member",
+					"id": 9,
+					"name": "列表",
+					"pathName": "pages/w_my_payment_recor/w_my_payment_recordlist",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "地图",
+					"pathName": "pages/parking/parking"
 				}
 			]
 		}

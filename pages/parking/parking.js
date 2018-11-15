@@ -7,31 +7,31 @@ Page({
     markers: [
 
     ],
-    controls: {
+    controls:{
 
 
     },
-    longitude: 0,
+    longitude:0,
     latitude: 0,
     showModalStatus: false,
-    state: 0,
-    detail: {},
-    timetxt: '预计时长',
-    hour: 0,
-    checked: 1,
-    hasorder: 0,
-    orderDetail: {},
-    showorderDetail: false,
-    cancelDetail: {},
+    state:0,
+    detail:{},
+    timetxt:'预计时长',
+    hour:0,
+    checked:1,
+    hasorder:0,
+    orderDetail:{},
+    showorderDetail:false,
+    cancelDetail:{},
   },
   onReady: function (e) {
     wx.hideLoading()
     this.mapCtx = wx.createMapContext('myMap')
-    var that = this;
+    var that =this;
     console.log(that.data.longitude)
-    if (this.data.longitude == 0) {
+    if(this.data.longitude == 0){
       this.gethearadr()
-    } else {
+    }else{
       this.getAdrDate();
     }
     this.loadState();
@@ -40,15 +40,15 @@ Page({
   },
   onLoad: function (e) {
     wx.showLoading({})
-    if (e.longitude) {
+    if(e.longitude){
       this.setData({
-        longitude: e.longitude,
-        latitude: e.latitude
+        longitude:e.longitude,
+        latitude:e.latitude
       })
     }
   },
-  gethearadr: function () {
-    var that = this;
+  gethearadr:function(){
+    var that =this;
     wx.getLocation({
       type: 'gcj02',
       success: function (res) {
@@ -61,244 +61,291 @@ Page({
         that.getAdrDate();
 
       },
-      complete: function (res) {
-
+      complete:function (res){
+        
       }
     })
   },
-  searchFun: function () {
+  searchFun:function(){
     wx.navigateTo({
       url: '../search/search'
     })
   },
   //事件处理函数
-  loadState: function () {
+  loadState: function() {
     var that = this;
     wx.request({
-      url: app.globalData.websize + '/api/index/state.json',
-      data: {
+      url: app.globalData.websize+'/api/index/state.json', 
+      data:{
         sessionId: wx.getStorageSync('sessionid'),
       },
-      method: 'POST',
+      method:'POST',
       header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
-      success: function (res) {
+      success: function(res) {
         app.callbackFun(res.data);
-        if (res.data.status == 2000000) {
-          res.data.data.time = parseInt(res.data.data.time / 60000)
-          if (res.data.data.state < 4) {
-            that.setData({
-              orderDetail: res.data.data,
-              hasorder: 1
-            })
-          } else {
-            that.setData({
-              orderDetail: res.data.data,
-              hasorder: 0
-            })
-          }
-        } else {
+        if(res.data.status == 2000000){
+           res.data.data.time = parseInt(res.data.data.time/60000)
+           if(res.data.data.state <4){
+              that.setData({
+                orderDetail:res.data.data,
+                hasorder:1
+              })
+           }else{
+              that.setData({
+                orderDetail:res.data.data,
+                hasorder:0
+              })
+           }
+        }else{
           wx.showToast({
-            title: res.data.message,
-            icon: 'loading',
+            title:res.data.message,
+            icon:'loading',
           })
         }
       }
     })
   },
-  daohang: function (reg) {
+  daohang:function(reg){
     let data = reg.target.dataset.json
-    wx.openLocation({
-      latitude: data.locLat,
-      longitude: data.locLng,
-      scale: 18,
-      name: data.unit,
-      address: data.address
-    })
+    wx.openLocation({  
+      latitude: data.locLat,  
+      longitude: data.locLng,  
+      scale: 18,  
+      name: data.unit,  
+      address:data.address  
+    })  
   },
-  cancelorder: function () {
-    var that = this;
+  cancelorder:function(){
+    var that =this;
     wx.request({
-      url: app.globalData.websize + '/api/staffIndex/subscribeCancel.json',
-      data: {
+      url: app.globalData.websize+'/api/staffIndex/subscribeCancel.json', 
+      data:{
         sessionId: wx.getStorageSync('sessionid'),
-        lockId: this.data.orderDetail.lockId
+        lockId:this.data.orderDetail.lockId
       },
-      method: 'POST',
+      method:'POST',
       header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
-      success: function (res) {
+      success: function(res) {
         app.callbackFun(res);
-        if (res.data.status == 2000000) {
-          that.setData({
-            cancelDetail: res.data.data
-          })
-        } else {
+        if(res.data.status == 2000000){
+           that.setData({
+              cancelDetail:res.data.data
+           })
+        }else{
           wx.showToast({
-            title: res.data.message,
-            icon: 'loading',
+            title:res.data.message,
+            icon:'loading',
           })
         }
       }
     })
   },
-  goingFun: function () {
+  goingFun:function(){
     this.setData({
-      showorderDetail: true,
-      hasorder: 0
+      showorderDetail:true,
+      hasorder:0
     })
   },
- 
-  getAdrDate: function () {
-    let that = this;
+  choseFun:function(){
+    let that =this
+    wx.showActionSheet({
+      itemList: ['所有', '1小时', '2小时','3小时','4小时'],
+      itemColor:'#f05b48',
+      success: function(res) {
+        that.data.hour = res.tapIndex;
+        if(res.tapIndex>0){
+          that.setData({
+              timetxt:res.tapIndex+'小时'
+          })
+        }else{
+          that.setData({
+              timetxt:'所有'
+          })
+        }
+        that.getAdrDate();
+      }
+    })
+  },
+  getAdrDate:function(){
+    let that = this ;
     console.log(wx.getStorageSync('sessionid'));
     wx.request({
-      url: app.globalData.websize + '/api/w_my/w_my.json',
-      data: {
-        latitude: that.data.latitude,
-        longitude: that.data.longitude,
+      url: app.globalData.websize+'/api/index/index.json', 
+      data:{
+        latitude:that.data.latitude,
+        longitude:that.data.longitude,
         sessionId: wx.getStorageSync('sessionid'),
-        hour: that.data.hour
+        hour:that.data.hour
       },
-      method: 'POST',
+      method:'POST',
       header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
-      success: function (res) {
+      success: function(res) {
         app.callbackFun(res.data);
-        if (res.data.status == 2000000) {
-          let arr = [{ id: 0, iconPath: '../images/wei.png', latitude: 23.129163, longitude: 113.264435, width: 50, height: 50, price: 'sds' }];
+        if(res.data.status == 2000000){
+          let arr = [{id:0,iconPath:'../images/wei.png',latitude:23.129163,longitude:113.264435,width:50,height:50,price:'sds'}];
           let list = res.data.data;
-          for (var i = 0; i < list.length; i++) {
+          for (var i = 0 ; i<list.length; i++) {
             let ico = '';
-            if (list[i].shareState == 1) {
+            if(list[i].shareState == 1){
               ico = '../images/wei.png'
-            } else {
+            }else{
               ico = '../images/car.png'
             }
-            arr.push({ id: list[i].id, iconPath: ico, price: list[i].price, latitude: list[i].latitude, longitude: list[i].longitude, width: 50, height: 50, title: list[i].price })
+            arr.push({id:list[i].id,iconPath:ico,price:list[i].price,latitude:list[i].latitude,longitude:list[i].longitude,width:50,height:50,title:list[i].price})
           }
           that.setData({
-            markers: arr
+              markers:arr
           })
-        } else {
+        }else{
           wx.showToast({
-            title: res.data.message,
-            icon: 'loading',
+            title:res.data.message,
+            icon:'loading',
           })
         }
       }
     })
   },
-  openDetaiFun: function (reg) {
+  openDetaiFun:function(reg){
     console.log(reg.markerId);
     let that = this
     wx.request({
-      url: app.globalData.websize + '/api/index/beforeCancel.json',
-      data: {
-        pId: reg.markerId,
+      url: app.globalData.websize+'/api/index/beforeCancel.json', 
+      data:{
+        pId:reg.markerId,
         sessionId: wx.getStorageSync('sessionid'),
-        latitude: that.data.latitude,
-        longitude: that.data.longitude
+        latitude:that.data.latitude,
+        longitude:that.data.longitude
       },
-      method: 'POST',
+      method:'POST',
       header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
-      success: function (res) {
+      success: function(res) {
         app.callbackFun(res.data);
-        if (res.data.status == 2000000) {
+        if(res.data.status == 2000000){
           that.setData({
-            state: res.data.data.state,
-            detail: res.data.data
+             state:res.data.data.state,
+             detail:res.data.data
           })
-        } else {
+        }else{
           wx.showToast({
-            title: res.data.message,
-            icon: 'loading',
+            title:res.data.message,
+            icon:'loading',
           })
         }
       }
     })
 
   },
-  yuyueFun: function (reg) {
+  yuyueFun:function(reg){
     this.setData({
-      showModalStatus: true,
+      showModalStatus:true,
     })
     console.log(reg)
   },
-  commityuyue: function () {
-    let that = this
+  commityuyue:function(){
+    let that =this
     wx.request({
-      url: app.globalData.websize + '/api/index/subscribe.json',
-      data: {
-        pId: that.data.detail.id,
+      url: app.globalData.websize+'/api/index/subscribe.json', 
+      data:{
+        pId:that.data.detail.id,
         sessionId: wx.getStorageSync('sessionid'),
-        state: that.data.checked
+        state:that.data.checked
       },
-      method: 'POST',
+      method:'POST',
       header: {
-        'content-type': 'application/x-www-form-urlencoded' // 默认值
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
-      success: function (res) {
+      success: function(res) {
         app.callbackFun(res.data);
-        if (res.data.status == 2000000) {
+        if(res.data.status == 2000000){
 
-        } else {
+        }else{
           wx.showToast({
-            title: res.data.message,
-            icon: 'loading',
+            title:res.data.message,
+            icon:'loading',
           })
         }
       }
     })
   },
-  changeico: function (reg) {
+  changeico:function(reg){
     let num = reg.target.dataset.state;
     console.log(num);
     this.setData({
-      checked: num
+      checked:num
     })
   },
-  cancelyy: function () {
+  cancelyy:function(){
     this.setData({
-      showModalStatus: false
+      showModalStatus:false
     })
   },
-  closePopFun: function (reg) {
+  closePopFun:function(reg){
     this.setData({
-      state: 0
+      state:0
     })
   },
-  aboutUs: function() {
-    wx.navigateTo({
-      url: "../aboutUs/aboutUs",
+  saoFun(){
+    wx.scanCode({
+      success: (res) => {
+        console.log(res)
+        wx.request({
+            url: app.globalData.websize+'/api/index/open.json', 
+            data:{
+              no:res.result,
+              sessionId: wx.getStorageSync('sessionid')
+            },
+            method:'POST',
+            header: {
+                'content-type': 'application/x-www-form-urlencoded' // 默认值
+            },
+            success: function(res) {
+              app.callbackFun(res.data);
+              if(res.data.status == 2000000){
+                console
+              }else{
+                wx.showToast({
+                  title:res.data.message,
+                  icon:'loading',
+                })
+              }
+            }
+        })
+      }
     })
   },
-		mintime: function(){
-			wx.navigateTo({
-				url: "/pages/w_my_payment_record/w_my_payment_record"
-			})
-	},
-	minmoney: function(){
-		
-				wx.navigateTo({
-					url: "/pages/w_my_payment_record/w_my_payment_record"
-				})
-		},
-  rebackFun() {
+  rebackFun(){
     console.log('dd')
     this.mapCtx.moveToLocation();
   },
+	mintime: function(e){
+			wx.navigateTo({
+				url: "../w_my_payment_recor/w_my_payment_recordlist",
+			})
+	},
+	aboutUs: function(e){
+				wx.navigateTo({
+					url: "../aboutUs/aboutUs"
+				})
+		},
+	minmoney: function(e){
+				wx.navigateTo({
+					url: "../w_my_payment_recor/w_my_payment_recordlist"
+				})
+		},
   touserFun: function () {
     wx.navigateTo({
       url: '../personalCenter/personalCenter'
     })
   },
-  closeFun: function (e) {
+    closeFun: function (e) {
     var currentStatu = e.currentTarget.dataset.statu;
     this.animationFun(currentStatu)
   },

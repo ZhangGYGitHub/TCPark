@@ -1,5 +1,6 @@
 // pages/search/search.js
 var QQMapWX = require("../../utils/qqmap-wx-jssdk.min.js");
+var demo;
 Page({
 
   /**
@@ -14,7 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var demo = new QQMapWX({
+     demo = new QQMapWX({
         key: 'LTUBZ-3BX3S-QT6OC-6ALZW-MSJR6-X2BWZ' // 必填
     });
     var that =this;

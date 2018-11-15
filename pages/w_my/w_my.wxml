@@ -79,7 +79,7 @@
         <image  class="with_arrow" src="/images/right.png"></image>
       </view>
     </view>
-   <view class='outbtn' bindtap="tap">退出登录</view> 
+   <view class='outbtn' bindtap="logout">退出登录</view> 
   </view>
 
     <!-- <button  open-type="openSetting" >设置授权</button>    -->

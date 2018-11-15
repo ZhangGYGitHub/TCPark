@@ -51,14 +51,14 @@
             </view>
           </view>
         </block> -->
-        <block  >
+       <!-- <block  >
         <view class='m-p-i'>
             <view class='member-pay-info'>
               <text class='member-pay-info-desc'>普通用户</text>
               <text class='member-pay-info-number no-member'>暂无优惠</text>
             </view>
             </view>
-        </block>
+        </block> -->
       
         <!-- 优惠券 -->
         <view class='m-p-i' bindtap='coupon'>
@@ -100,7 +100,7 @@
         <view class='pay-info-desc'>合计：
           <text class='pay-info-number-biao'>¥</text>
           <text class='pay-info-number'>{{pay_result}}</text>
-          <button class='pay'>立即支付</button>
+          <button class='pay' bindtap="paychange">立即支付</button>
         </view >
      
       </view>

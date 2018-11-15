@@ -63,111 +63,69 @@ Page({
       member: app.globalData.member,
     }) 
     // 请求查询需要缴费多少
-    // wx.request({
-    //   url: app.globalData.host + '/wxinfo/listBindCar',
-    //   data:{
-    //     carnumber: options.title,
-    //   },
-    //   header: {
-    //     'content-type': 'application/json',
-    //     'Cookie': 'NWRZPARKINGID=' + app.globalData.loginMess
-    //   },
-    //   success: function (res) {
-    //     console.log(res)
-    //     if ((parseInt(res.statusCode) === 200) && res.data.code === 1001) {
-    //       that.setData({
-    //         cars_number: res.data.data.list,
-    //         first_jin: false,
-    //       })
-    //       wx.hideLoading()
-    //     } else {
-    //       wx.hideLoading()
-    //       wx.showModal({
-    //         title: "获取信息出错",
-    //         content: "" + res.data.msg,
-    //         confirmColor: "#4fafc9",
-    //         confirmText: "我知道了",
-    //         showCancel: false,
-    //         success: function (res) {
-    //           if (res.confirm) {
-    //             wx.reLaunch({
-    //               url: "/pages/index/index"
-    //             })
-    //           }
-    //         }
-    //       })
-    //     }
-    //   },
-    //   fail: function (res) {
-    //     wx.hideLoading()
-    //     console.log(res)
-    //     wx.showModal({
-    //       title: "获取信息出错",
-    //       content: "请求超时或出现了其它未知错误，请您重新尝试",
-    //       confirmColor: "#4fafc9",
-    //       confirmText: "我知道了",
-    //       showCancel: false,
-    //       success: function (res) {
-    //         if (res.confirm) {
-    //           wx.reLaunch({
-    //             url: "/pages/index/index"
-    //           })
-    //         }
-    //       }
-    //     })
-    //   }
+     /* wx.request({
+     url: app.globalData.host + '/wxinfo/listBindCar',
+      data:{
+         carnumber: options.title,
+       },
+       header: {
+         'content-type': 'application/json',
+         'Cookie': 'NWRZPARKINGID=' + app.globalData.loginMess
+       },
+       success: function (res) {
+        console.log(res)
+         if ((parseInt(res.statusCode) === 200) && res.data.code === 1001) {
+           that.setData({
+            cars_number: res.data.data.list,
+            first_jin: false,
+         })
+          wx.hideLoading()
+         } else {
+           wx.hideLoading()
+           wx.showModal({
+           title: "获取信息出错",
+             content: "" + res.data.msg,
+             confirmColor: "#4fafc9",
+             confirmText: "我知道了",
+             showCancel: false,
+             success: function (res) {
+               if (res.confirm) {
+                wx.reLaunch({
+                   url: "/pages/index/index"
+                 })
+               }
+             }
+           })
+         }
+       },
+       fail: function (res) {
+         wx.hideLoading()
+         console.log(res)
+         wx.showModal({
+           title: "获取信息出错",
+          content: "请求超时或出现了其它未知错误，请您重新尝试",
+           confirmColor: "#4fafc9",
+          confirmText: "我知道了",
+           showCancel: false,
+           success: function (res) {
+             if (res.confirm) {
+               wx.reLaunch({
+                 url: "/pages/index/index"
+               })
+            }
+          }
+         })
+       } */
     // })
 
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-    // 判断是否会员
-    this.setData({
-      member: app.globalData.member
-    })
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    // 判断是否会员
-    this.setData({
-      member: app.globalData.member
-    }) 
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
+	//付款跳转按钮
+	paychange: function () {
+		wx.navigateTo({
+			url: '../w_payment_prompt/w_payment_prompt'
+		})
+	},
   // 付款按钮
   payment: function (event) {
     var that = this;
@@ -343,7 +301,7 @@ Page({
     }.bind(this), 200)
   },
   //关闭隐藏对话框
-  close_coupon:function(){
+  close_coupon: function(){
     this.hideModal();
   },
   //缴费规则

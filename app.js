@@ -108,13 +108,25 @@ App({
     // host: 'https://www.jnnewway.com/swsy/'
     // host: 'http://192.168.0.116',
     host: 'http://192.168.0.108',
+		websize:'http://139.199.175.39:8096/gxpark'
+		
     // host: 'https://awakall.com',
     // host: 'http://192.168.0.110',
     // host: 'http://192.168.0.105:8080',
-  }
-  // ,
-  //  globalData: {
-  //   flag: false
-  // }
-
+  },
+	callbackFun:function(reg){
+		console.log(reg)
+		if(reg.status == 5000103){
+			wx.navigateTo({
+				url: '../login/login'
+			})
+		}else{
+		
+		}
+	},
+	 isphoneFun(number){
+	    var myreg =  /^[1][3,4,5,7,8][0-9]{9}$/;
+	    console.log(myreg.test(number))
+	    return myreg.test(number);
+	  }
 })
