@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="map-box">
-  <map id="myMap" show-location scale='12' bindmarkertap="openDetaiFun" class='mapclass' controls='{{controls}}' markers="{{markers}}" longitude="{{longitude}}" latitude="{{latitude}}" >
+  <map id="myMap" show-location scale='15' bindmarkertap="xianshi" bindcallouttap='xianshi' class='mapclass' controls='{{controls}}' markers="{{markers}}" longitude="{{longitude}}" latitude="{{latitude}}" >
   
     <cover-view class="section-search">
       <cover-image src='/images/search.png' class='search-box' bindtap="searchFun"></cover-image>
@@ -28,9 +28,9 @@
     <cover-view>
       <cover-view class="close-pop-mb" bindtap="closePopFun"></cover-view>
       <!-- 共享时段 -->
-      <cover-view class="pop-msg-box" wx:if="{{state == 1}}">
+      <cover-view class="pop-msg-box" wx:if="{{false}}">
         <cover-view class="tit">
-          <cover-image class="ico" src="../images/adrico.png"/>
+          <cover-image class="ico" src="../../images/2.png"/>
           {{detail.address}}
         </cover-view>
         <cover-view class='pop-main'>
@@ -40,12 +40,6 @@
             <cover-view class='num'>{{detail.sharePrice}}</cover-view>
             <cover-view  class="t">/时</cover-view>
             <cover-view class='txt'>价格</cover-view>
-          </cover-view>
-          <cover-view class='item'>
-            <cover-view class="t">¥</cover-view>
-            <cover-view class='num'>{{detail.maxPrice}}</cover-view>
-            <cover-view class="t">/天</cover-view>
-            <cover-view class='txt'>封顶</cover-view>
           </cover-view>
           <cover-view class='item'>
             <cover-view class="t">¥</cover-view>
@@ -55,73 +49,10 @@
           </cover-view>
         </cover-view>
         <!-- <cover-view class='pop-ps'>{{detail.}}</cover-view> -->
-        <cover-view class='pop-compant'>共享时间：{{detail.shareStart}}-{{detail.shareEnd}}</cover-view>
+        <cover-view class='pop-compant'>共享时间：{{detail.startTime}}-{{detail.endTime}}</cover-view>
         <cover-view class='pop-btn'>
           <cover-view class="btn" bindtap="yuyueFun">预约停车</cover-view>
-          <cover-view class="btn">导航</cover-view>
-        </cover-view>
-      </cover-view>
-      <!-- 非共享 -->
-      <cover-view class="pop-msg-box" wx:if="{{state == 2}}" id="Jshowdown">
-        <cover-view class="tit">
-          <cover-image class="ico" src="../images/adrico.png"/>
-          {{detail.address}}
-        </cover-view>
-        <cover-view class='pop-main'>
-          <cover-view class="border"></cover-view>
-          <cover-view class='item'>
-            <cover-view class="t">¥</cover-view>
-            <cover-view class='num'>{{detail.noSharePrice}}</cover-view>
-            <cover-view  class="t">/时</cover-view>
-            <cover-view class='txt'>价格</cover-view>
-          </cover-view>
-
-          <cover-view class='item'>
-            <cover-view class="t">¥</cover-view>
-            <cover-view class='num'>{{detail.distance}}</cover-view>
-            <cover-view class="t">km</cover-view>
-            <cover-view class='txt'>距离</cover-view>
-          </cover-view>
-        </cover-view>
-        <cover-view class='pop-compant'>归属公司：广州酷顶网络</cover-view>
-        <cover-view class='pop-btn'>
-          <cover-view class="border"></cover-view>
-          <cover-view class="btn" bindtap="yuyueFun">预约停车</cover-view>
-          <cover-view class="btn" >导航</cover-view>
-        </cover-view>
-      </cover-view>
-      <!-- 共享全天候 -->  
-      <cover-view class="pop-msg-box" wx:if="{{state == 3}}">
-        <cover-view class="tit">
-          <cover-image class="ico" src="../images/adrico.png"/>
-          {{detail.address}}
-        </cover-view>
-        <cover-view class='pop-main'>
-          <cover-view class="border"></cover-view>
-          <cover-view class='item'>
-            <cover-view class="t">¥</cover-view>
-            <cover-view class='num'>{{detail.sharePrice}}</cover-view>
-            <cover-view  class="t">/时</cover-view>
-            <cover-view class='txt'>价格</cover-view>
-          </cover-view>
-          <cover-view class='item'>
-            <cover-view class="t">¥</cover-view>
-            <cover-view class='num'>{{detail.maxPrice}}</cover-view>
-            <cover-view class="t">/天</cover-view>
-            <cover-view class='txt'>封顶</cover-view>
-          </cover-view>
-          <cover-view class='item'>
-            <cover-view class="t">¥</cover-view>
-            <cover-view class='num'>{{detail.distance}}</cover-view>
-            <cover-view class="t">km</cover-view>
-            <cover-view class='txt'>距离</cover-view>
-          </cover-view>
-        </cover-view>
-        <!-- <cover-view class='pop-ps'>在此消费免费停车</cover-view> -->
-        <cover-view class='pop-compant'>共享时间：{{detail.shareStart}}-{{detail.shareEnd}}</cover-view>
-        <cover-view class='pop-btn'>
-          <cover-view class="btn">预约停车</cover-view>
-          <cover-view class="btn">导航</cover-view>
+          <cover-view class="btn" bindtap="daohang">导航</cover-view>
         </cover-view>
       </cover-view>
     </cover-view>  
@@ -201,7 +132,6 @@
           <cover-view class="btn" data-json="{{orderDetail}}" bindtap="daohang">导航</cover-view>
         </cover-view>
     </cover-view>
-
     <!-- 取消预约 -->
     <cover-view class="drawer_container" animation="{{animationData}}" wx:if="{{showModalStatus}}">
       <cover-view class='pop-main-t'>
@@ -237,8 +167,5 @@
         </cover-view>
       </cover-view>
     </cover-view>
-
-
   </map>
-
 </view>

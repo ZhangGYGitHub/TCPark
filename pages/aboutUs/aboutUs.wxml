@@ -2,24 +2,16 @@
 <view>
     <view class='abtop'>
         <image mode="widthFix" class='logo' src="/images/logo.jpg"></image>
-        <view class='name'>Parking卫</view>
+        <view class='name'>TCpark</view>
     </view>
     <view class='msg'>
         <view class='msg-row'>
             <text class='lf'>电话</text>
-            <text class='rg'></text>
+            <text class='rg'>15720092220</text>
         </view>
         <view class='msg-row'>
             <text class='lf'>邮箱</text>
-            <text class='rg'>@qq.com</text>
-        </view>
-        <view class='msg-row'>
-            <text class='lf'>公众号</text>
-            <text class='rg'></text>
-        </view>
-        <view class='msg-row'>
-            <text class='lf'>官网</text>
-            <image mode="widthFix" src="../images/arrow-right.png" class='arrow rg'></image>
+            <text class='rg'>464940545@qq.com</text>
         </view>
     </view> 
 </view> 

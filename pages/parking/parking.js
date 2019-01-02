@@ -4,18 +4,128 @@ const app = getApp()
 
 Page({
   data: {
-    markers: [
-
+    markers: [{
+							id: "1",
+							latitude: 37.980317,
+							longitude: 114.525604,
+							width: 50,
+							height: 50,
+							iconPath: "/img/10.png",
+							title: "风雨操场 ",
+							callout:{
+								content:'风雨操场 距离：335米 价格：3元',
+								borderRadius:4,
+								bgColor:'#C0D9D9',
+								display:'ALWAYS',
+								padding:4,
+								},
+ 						},
+						{
+							id: "2",
+							latitude: 37.997380,
+							longitude: 114.521399,
+							width: 50,
+							height: 50,
+							iconPath: "/img/10.png",
+							title: "师大停车场 距离：2.2km 价格：3元",
+							callout:{
+								content:'河北师范大学停车场 距离：2.2km 价格：3元',
+								borderRadius:4,
+								bgColor:'#C0D9D9',
+								display:'ALWAYS',
+								padding:4,
+								},
+ 						},
+						{
+							id: "3",
+							latitude: 37.980063,
+							longitude: 114.517525,
+							width: 50,
+							height: 50,
+							iconPath: "/img/10.png",
+							title: "6A停车场 距离：815m 价格：1元",
+							callout:{
+								content:'6A停车场 距离：815m 价格：1元',
+								borderRadius:4,
+								bgColor:'#C0D9D9',
+								display:'ALWAYS',
+								padding:4,
+							}
+						},
+						{
+							id: "4",
+							latitude: 37.978346,
+							longitude: 114.517611,
+							width: 50,
+							height: 50,
+							iconPath: "/img/10.png",
+							title: "科大生活广场停车场 ",
+							callout:{
+							content:'科大生活广场停车场 距离：790m 价格：2元',
+							borderRadius:4,
+							bgColor:'#C0D9D9',
+ 							display:'ALWAYS',
+							padding:4,
+ 							}
+						},{
+							id: "5",
+							latitude: 37.975099,
+							longitude: 114.525400,
+							width: 50,
+							height: 50,
+							iconPath: "/img/10.png",
+							title: "信息楼停车场 ",
+							callout:{
+							content:'信息楼停车场 距离：214m 价格：3元',
+							borderRadius:4,
+							bgColor:'#C0D9D9',
+ 							display:'ALWAYS',
+							padding:4,
+ 							}
+						},{
+							id: "6",
+							latitude: 37.973737,
+							longitude: 114.521077,
+							width: 50,
+							height: 50,
+							iconPath: "/img/10.png",
+							title: "南公教停车场 ",
+							callout:{
+							content:'南公教停车场 距离：541.2m 价格：4元',
+							borderRadius:4,
+							bgColor:'#C0D9D9',
+ 							display:'ALWAYS',
+							padding:4,
+ 							}
+						},{
+							id: "7",
+							latitude: 37.972950,
+							longitude: 114.519060,
+							width: 50,
+							height: 50,
+							iconPath: "/img/10.png",
+							title: "南门停车场 ",
+							callout:{
+							content:'南门停车场 距离：735.8m 价格：2元',
+							borderRadius:4,
+							bgColor:'#C0D9D9',
+ 							display:'ALWAYS',
+							padding:4,
+ 							}
+						},
     ],
     controls:{
-
-
     },
     longitude:0,
     latitude: 0,
     showModalStatus: false,
     state:0,
-    detail:{},
+		states:false,
+    detail:{
+			address:"hebei",
+			sharePrice:'3',
+			distance:'3',
+		},
     timetxt:'预计时长',
     hour:0,
     checked:1,
@@ -34,7 +144,7 @@ Page({
     }else{
       this.getAdrDate();
     }
-    this.loadState();
+    //this.loadState();
 
 
   },
@@ -58,7 +168,7 @@ Page({
 
         })
         console.log(res.longitude, res.latitude)
-        that.getAdrDate();
+        //that.getAdrDate();
 
       },
       complete:function (res){
@@ -108,13 +218,17 @@ Page({
     })
   },
   daohang:function(reg){
-    let data = reg.target.dataset.json
+    //let data = reg.target.dataset.json
     wx.openLocation({  
-      latitude: data.locLat,  
-      longitude: data.locLng,  
-      scale: 18,  
-      name: data.unit,  
-      address:data.address  
+//       latitude: data.locLat,  
+//       longitude: data.locLng,  
+				 scale: 18,  
+//       name: data.unit,  
+//       address:data.address  
+				latitude:markers[0].latitude,
+				longitude:markers[0].longitude,
+				 name:markers[0].title,
+				 address:"石家庄",
     })  
   },
   cancelorder:function(){
@@ -150,26 +264,6 @@ Page({
       hasorder:0
     })
   },
-  choseFun:function(){
-    let that =this
-    wx.showActionSheet({
-      itemList: ['所有', '1小时', '2小时','3小时','4小时'],
-      itemColor:'#f05b48',
-      success: function(res) {
-        that.data.hour = res.tapIndex;
-        if(res.tapIndex>0){
-          that.setData({
-              timetxt:res.tapIndex+'小时'
-          })
-        }else{
-          that.setData({
-              timetxt:'所有'
-          })
-        }
-        that.getAdrDate();
-      }
-    })
-  },
   getAdrDate:function(){
     let that = this ;
     console.log(wx.getStorageSync('sessionid'));
@@ -188,7 +282,7 @@ Page({
       success: function(res) {
         app.callbackFun(res.data);
         if(res.data.status == 2000000){
-          let arr = [{id:0,iconPath:'../images/wei.png',latitude:23.129163,longitude:113.264435,width:50,height:50,price:'sds'}];
+          let arr = [{id:0,iconPath:'/img/10.png',latitude:37.9782899771,longitude:114.5220733093,width:50,height:50,price:'sds'}];
           let list = res.data.data;
           for (var i = 0 ; i<list.length; i++) {
             let ico = '';
@@ -239,6 +333,7 @@ Page({
             icon:'loading',
           })
         }
+				this.yuyueFun();
       }
     })
 
@@ -249,6 +344,11 @@ Page({
     })
     console.log(reg)
   },
+	xianshi:function(reg){
+		this.setData({
+			states:true,
+		})
+	},
   commityuyue:function(){
     let that =this
     wx.request({
@@ -292,42 +392,13 @@ Page({
       state:0
     })
   },
-  saoFun(){
-    wx.scanCode({
-      success: (res) => {
-        console.log(res)
-        wx.request({
-            url: app.globalData.websize+'/api/index/open.json', 
-            data:{
-              no:res.result,
-              sessionId: wx.getStorageSync('sessionid')
-            },
-            method:'POST',
-            header: {
-                'content-type': 'application/x-www-form-urlencoded' // 默认值
-            },
-            success: function(res) {
-              app.callbackFun(res.data);
-              if(res.data.status == 2000000){
-                console
-              }else{
-                wx.showToast({
-                  title:res.data.message,
-                  icon:'loading',
-                })
-              }
-            }
-        })
-      }
-    })
-  },
   rebackFun(){
     console.log('dd')
     this.mapCtx.moveToLocation();
   },
 	mintime: function(e){
 			wx.navigateTo({
-				url: "../w_my_payment_recor/w_my_payment_recordlist",
+				url: "../w_my_payment_time/w_my_payment_time",
 			})
 	},
 	aboutUs: function(e){

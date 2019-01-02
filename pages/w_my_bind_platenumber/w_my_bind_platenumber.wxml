@@ -25,10 +25,3 @@
     </view>
   </form>
 </view>
-<view class='bind-tishi'>
-  <view class="search-prompt" >
-      <text class="prompt-desc prompt-desc1">温馨提示</text>  
-      <text class="prompt-desc">请输入车牌号将车牌绑定到会员号，即可享受会员专属优惠。
-      </text>
-  </view>
-</view>

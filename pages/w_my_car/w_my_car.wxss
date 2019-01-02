@@ -66,7 +66,7 @@ page{
   height: 60rpx;  
 }
 /* 添加车牌 */
-/* .add-car-info{
+.add-car-info{
   display: flex;
   justify-content: center;
   align-items: center;  
@@ -84,7 +84,7 @@ page{
   text-align: center;
   font-size: 32rpx;
   color: #00aced;
-} */
+}
 .add-carinfo{
   position: absolute;
   bottom: 62rpx;

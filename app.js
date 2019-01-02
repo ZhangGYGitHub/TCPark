@@ -106,8 +106,8 @@ App({
     history: null,        //历史记录，最多两位
     loginMess: '',            //session，问刘哥
     // host: 'https://www.jnnewway.com/swsy/'
-    // host: 'http://192.168.0.116',
-    host: 'http://192.168.0.108',
+   // host: 'http://127.0.0.1',
+   host: 'http://192.168.0.108',
 		websize:'http://139.199.175.39:8096/gxpark'
 		
     // host: 'https://awakall.com',

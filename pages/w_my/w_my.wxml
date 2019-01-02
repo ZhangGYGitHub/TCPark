@@ -1,17 +1,14 @@
 <!--pages/w_my/w_my.wxml-->
 <view class="top">
       <view class="userinfo">
-         <open-data type="userAvatarUrl"  bindtap="bindViewTap" class="userinfo-avatar" mode="cover"></open-data>
-				<image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image> 
+        <open-data type="userAvatarUrl"  bindtap="bindViewTap" class="userinfo-avatar" mode="cover"></open-data>
+				<!-- <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image> -->
         <view class="userinfo-info">
           <open-data type="userNickName"  class="userinfo-nickname" lang="zh_CN"></open-data>
           <block wx:if="{{member}}">
             <text class="userinfo-member">{{memberdengji}}</text>
             <text class="userinfo-jifen">车牌号：{{cars_number}}</text>
              <text class="userinfo-jifen">手机号：{{memberjifen}}</text>
-          </block>
-          <block wx:else>
-            <text class="userinfo-member1">普通用户</text>
           </block>
         </view>
       </view>
@@ -24,7 +21,7 @@
 </view>
 <!--列表  -->
   <view class="person-list">
-
+		<scroll-view scroll-y="true" style="height: 400px">
     <!--缴费历史-->
     <view class="list-item"  bindtap='my_list1'> 
       <view class="item1">
@@ -48,17 +45,6 @@
         <image  class="with_arrow" src="/images/right.png"></image>
       </view>
     </view>
-
-    <!--会员绑定-->
-    <!-- <view class="list-item member" wx:if="{{!member}}" bindtap='my_list3'>
-      <view class="item1">
-       
-        <text class="item-text">会员绑定</text>
-      </view>
-      <view class="item2">
-        <image  class="with_arrow" src="/images/right.png"></image>
-      </view>
-    </view> -->
 	<!-- 	商品优惠券 -->
     <view class="list-item" bindtap='my_list5'>
       <view class="item1">
@@ -69,16 +55,27 @@
         <image  class="with_arrow" src="/images/right.png"></image>
       </view>
     </view>
-    <!--设置-->
+		<!-- 共享车位的申请-->
+		<view class="list-item stopcar" bindtap='my_xiang'>
+			<view class="item1">
+				<image class="item-image" src="/images/4.png"></image> 
+				<text class="item-text">共享车位申请</text>
+			</view>
+			<view class="item2">
+				<image  class="with_arrow" src="/images/right.png"></image>
+			</view>
+		</view>
+    <!--关于我们-->
     <view class="list-item stopcar" bindtap='my_list4'>
       <view class="item1">
-         <image class="item-image" src="/images/4.png"></image> 
+         <image class="item-image" src="/images/logo.jpg"></image> 
         <text class="item-text">关于我们</text>
       </view>
       <view class="item2">
         <image  class="with_arrow" src="/images/right.png"></image>
       </view>
     </view>
+		</scroll-view>
    <view class='outbtn' bindtap="logout">退出登录</view> 
   </view>
 

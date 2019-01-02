@@ -131,7 +131,7 @@ Page({
   },
   tapindex: function (e) {
     wx.reLaunch({
-      url: "/pages/w_my/w_my"
+      url: "/pages/parking/parking"
     })
   },
 

@@ -19,11 +19,11 @@
 </view>
 <!-- 绑定车牌 -->
 <!-- 之前样式 -->
- <!-- <view class='add-car-info' bindtap='addPlatenumber' wx:if="{{cars_number.length<5}}">
+<view class='add-car-info' bindtap='addPlatenumber' wx:if="{{cars_number.length<5}}">
   <image src='/images/add_car.png'></image>
   <text>添加新车牌</text>
-</view> -->
+</view>
 <!-- 修改后样子 -->
- <view class='add-carinfo' bindtap='addPlatenumber' wx:if="{{cars_number.length<5}}">
-  <text>添加车辆</text>
+<view class='add-carinfo' bindtap='tiaoguo'>
+  <text>跳过</text>
 </view>

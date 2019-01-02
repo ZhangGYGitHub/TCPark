@@ -137,6 +137,11 @@ Page({
       })
     }
   },
+	my_xiang:function(e){
+		wx.navigateTo({
+			url: "/pages/my_shenqing_gongxiang/my_shenqing_gongxiang"
+		})
+	},
   // 我的爱车
   my_list2: function (e) {
     console.log(this.data.member)
@@ -165,30 +170,30 @@ Page({
       })
     }
   },
-	logout: function () {
-	    let that = this;
-	    wx.request({
-	      url: app.globalData.websize + '/api/common/listMessage.json',
-	      data: {
-	        sessionId: wx.getStorageSync('sessionid')
-	      },
-	      method: 'POST',
-	      header: {
-	        'content-type': 'application/x-www-form-urlencoded' // 默认值
-	      },
-	      success: function (res) {
-	        app.callbackFun(res);
-	        if (res.data.status == 2000000) {
-	
-	        } else {
-	          wx.showToast({
-	            title: res.data.message,
-	            icon: 'loading',
-	          })
-	        }
-	      }
-	    })
-	  },
+  logout:function(){
+    let that =this;
+    wx.request({
+      url: app.globalData.websize+'/api/common/listMessage.json', 
+      data:{
+        sessionId: wx.getStorageSync('sessionid')
+      },
+      method:'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded' // 默认值
+      },
+      success: function(res) {
+        app.callbackFun(res);
+        if(res.data.status == 2000000){
+          
+        }else{
+          wx.showToast({
+            title:res.data.message,
+            icon:'loading',
+          })
+        }
+      }
+    })
+  },
 		bindViewTap: function () {
 			wx.navigateTo({
 				url: '../w_my_car/w_my_car'
@@ -197,7 +202,7 @@ Page({
   //商户优惠券
   my_list5: function (e) {
     wx.navigateTo({
-      url: "#"
+      url: "../w_my_businessman_coupon/w_my_businessman_coupon"
     })
   },
 })

@@ -8,20 +8,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-      cars_number:[],//车牌号，默认无
-  //      {
-  //   carnumber: "鲁A·123456",
-  //   opdate: "2018-07-07 14:45:55"
-  // }, {
-  //   carnumber: "鲁B·123456",
-  //   opdate: "2018-07-07 15:02:31"
-  // },
+      cars_number:[//车牌号，默认无
+      {
+    carnumber: "冀A·123456",
+    opdate: "2018-07-07 14:45:55"
+  },
+],
       first_jin: true,//是否是首次进入，默认是
   },
 
   /**
-   * 生命周期函数--监听页面加载
-   */
+    生命周期函数--监听页面加载
+  
   onLoad: function (options) {
     var that = this;
     
@@ -75,7 +73,7 @@ Page({
           success: function (res) {
             if (res.confirm) {
               wx.reLaunch({
-                url: "/pages/index/index"
+                //url: "/pages/parking/parking"
               })
             }
           }
@@ -83,6 +81,7 @@ Page({
       }
     })
   },
+ */
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -129,6 +128,13 @@ Page({
   onReachBottom: function () {
   
   },
+	//跳过
+	tiaoguo:function(){
+    wx.reLaunch({
+      url: "/pages/parking/parking"
+    })
+  },
+	//添加车牌
   addPlatenumber:function(){
     wx.navigateTo({
       url: "/pages/w_my_bind_platenumber/w_my_bind_platenumber"

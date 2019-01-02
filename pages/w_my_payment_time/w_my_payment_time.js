@@ -8,25 +8,25 @@ Page({
   data: {
   		date: "",//日期     
   		payment:[{
-  			car_money: "7.00",//支付金额
-				context:"2",//距离
+  			car_money: "2.00",//支付金额
+				context:"10",//距离
   			payment_area: '河北科技大学停车场A2区域', //停车区域
   			pay_time: "2018-07-01 09:25",          //付款时间
   			stop_time:"2018-08-01 09:25",      //停车时长
   		}, {
-  			car_money: "6.00",               //支付金额
+  			car_money: "4.00",               //支付金额
 				context:"5",//距离
   			payment_area: '河北科技大学停车场A2区域', //停车区域
   			pay_time: "2018-07-01 09:25",          //付款时间
   			stop_time:"2018-08-01 09:25",      //停车时长
   			},{
-  				car_money: "2.00",               //支付金额
+  				car_money: "6.00",               //支付金额
 					context:"8",//距离
   				payment_area: '河北科技大学停车场A2区域', //停车区域
   				pay_time: "2018-07-01 09:25",          //付款时间
   				stop_time:"2018-08-01 09:25",       //停车时长
   			},{
-  				car_money: "10.00",               //支付金额
+  				car_money: "8.00",               //支付金额
 					context:"8",//距离
   				payment_area: '河北科技大学停车场A2区域', //停车区域
   				pay_time: "2018-07-01 09:25",          //付款时间

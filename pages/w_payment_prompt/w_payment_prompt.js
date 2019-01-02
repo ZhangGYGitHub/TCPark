@@ -8,7 +8,7 @@ data: {
 /**
  * 生命周期函数--监听页面初次渲染完成
  */
-onReady() {
+onLoad() {
     //5s后跳转
     this.data.Time = setInterval(() => {
       this.setData({
@@ -17,14 +17,14 @@ onReady() {
       if (this.data.time <= 0) {
         this.goHome()
       }
+		
     }, 1000)
 },
 goHome() {
-    wx.reLaunch({
-      url: '../parking/parking'
-
-    })
-},
+      			wx.switchTab({
+      				url: "/pages/parking/parking",
+      			})
+						}
 })
 
 

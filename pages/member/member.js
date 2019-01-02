@@ -9,7 +9,7 @@ Page({
   data: {
     time: '获取验证码', //倒计时 
     disabled:true,//获取验证码按钮属性
-    disabled2: true,//确认绑定按钮属性
+    disabled2: true,//确认绑定按钮属性	
     currentTime: 60,
     phoneNum: '',//手机号
     code: '',//验证码 
